@@ -181,7 +181,7 @@ def test_alembic_migrations_cover_model_tables_columns_and_indexes() -> None:
     migration_schema = _replayed_migration_schema()
 
     assert migration_schema.tables == _model_tables()
-    assert _model_index_names() <= migration_schema.indexes
+    assert migration_schema.indexes == _model_index_names()
 
 
 def test_insforge_init_sql_covers_model_tables_columns_indexes_and_head_stamp() -> None:
@@ -191,7 +191,7 @@ def test_insforge_init_sql_covers_model_tables_columns_indexes_and_head_stamp() 
 
     assert {name: init_sql_tables[name] for name in model_tables} == model_tables
     assert set(init_sql_tables) - set(model_tables) == {"alembic_version"}
-    assert _model_index_names() <= _init_sql_index_names()
+    assert _init_sql_index_names() == _model_index_names()
     assert re.search(
         rf"INSERT INTO alembic_version \(version_num\)\s+SELECT\s+'{_latest_revision()}'",
         sql,

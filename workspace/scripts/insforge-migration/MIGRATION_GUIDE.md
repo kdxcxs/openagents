@@ -107,7 +107,7 @@ code changes.
 > `0001_initial_schema.sql` already includes a final `INSERT INTO
 > alembic_version VALUES ('014')`. **Update '014' if the source repo's
 > alembic head changes.**  Find current head with:
-> `ls workspace/backend/alembic/versions/ | tail -1`.
+> `cd workspace/backend && alembic heads`.
 
 ---
 

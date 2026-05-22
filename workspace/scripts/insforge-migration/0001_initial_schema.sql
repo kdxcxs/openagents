@@ -59,7 +59,6 @@ CREATE TABLE IF NOT EXISTS channels (
     last_event_at       bigint,
     created_at          timestamptz NOT NULL DEFAULT now()
 );
-CREATE UNIQUE INDEX IF NOT EXISTS uq_channels_ws_name ON channels (workspace_id, name);
 
 -- ===========================================================================
 -- Channel members (per-thread participants)
